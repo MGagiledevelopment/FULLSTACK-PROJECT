@@ -4,7 +4,7 @@ export default function Footer (){
 
     return(
 
-        <div/>
+        <div> Soy un FOOTER </div>
 
     )
 
