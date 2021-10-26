@@ -1,5 +1,5 @@
 import React from 'react';
-import Feed from '../pages/Feed';
+import Feed from "../../pages/Feed/index"
 
 export default function Main (){
 
