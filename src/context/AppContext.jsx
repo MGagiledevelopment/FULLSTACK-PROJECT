@@ -3,10 +3,10 @@ import { useState,createContext } from "react";
 export const AppContext = createContext()
 
 export const AppProvider  = (props) =>{
-    const [name, setName] = useState("");
+    const [text, setText] = useState("FUNCIONO EL NOMBRE");
 
     return (
-        <AppContext.Provider value={{name,setName}}>
+        <AppContext.Provider value={{ text,setText }}>
             {props.children}
         </AppContext.Provider>
     );
