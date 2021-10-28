@@ -10,6 +10,8 @@ export default function Feed() {
     const tweets = collection(firestore, "social-network");
     getDocs(tweets).then((tweets) => {
       tweets.forEach((tweet) => {
+        
+        // eliminar este console //
         console.log(tweet.data());
       });
     });
@@ -18,6 +20,8 @@ export default function Feed() {
   useEffect(() => {
     fetchData()
   }, []);
+
+  // handle para enviar el tweet //
 
   
   return (<div className={feedStyles.feed}>
