@@ -6,15 +6,19 @@ import { collection, getDocs, addDoc } from "@firebase/firestore";
 
 export default function Feed() {
   const { text, setText } = useContext(AppContext);
-console.log(text)
+  const { tweets, setTweets } = useContext(AppContext);
+
+
   const fetchData = () => {
-    const tweets = collection(firestore, "social-network");
-    getDocs(tweets).then((tweets) => {
+    const tweetsCollection = collection(firestore, "social-network");
+    const arrayTweets = [];
+
+    getDocs(tweetsCollection).then((tweets) => {
       tweets.forEach((tweet) => {
-        // eliminar este console //
-        console.log(tweet.data());
+        arrayTweets.push({ ...tweet.data(), id: tweet.id });
       });
     });
+    setTweets(arrayTweets);
   };
 
   useEffect(() => {
@@ -28,20 +32,40 @@ console.log(text)
     addDoc(tweetsCollection, {
       text: text,
     });
+    setText("");
+   
   };
 
   return (
     <div className={feedStyles.feed}>
-      <form onSubmit={handleSubmit}>
-        <input
+
+      <form onSubmit={handleSubmit} className={feedStyles.form}>
+        <textarea
           type="text"
           placeholder="What's happening?"
+          value={text}
           onChange={(e) => {
             setText(e.target.value);
           }}
-        />
+        ></textarea>
         <button>POST!</button>
       </form>
+
+<div>
+      {tweets.map((tweet) => {
+         console.log(tweet.text)
+          return (
+            <div key={tweet.id}>
+             <div>{tweet.text}</div>
+            </div>
+          );
+        })}
+
+
+      </div>
+
+
+
     </div>
   );
 }

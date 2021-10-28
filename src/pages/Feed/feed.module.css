@@ -1,3 +1,12 @@
 .feed{
-    border:1px solid red;
+    border:0.5rem solid red;
+}
+
+.form{
+    border:0.2rem dotted purple;
+    margin-bottom: 4px;
+}
+.tweets{
+    border:0.2rem dotted blue;
+    font-size: 2rem;
 }
