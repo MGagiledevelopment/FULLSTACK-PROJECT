@@ -28,8 +28,7 @@ export default function Feed() {
     //   });
     //   setTweets(arrayTweets);
     // });
-
-     onSnapshot(
+      onSnapshot(
       collection(firestore, "social-network"),
       (tweets) => {
         const arrayTweets = [];
