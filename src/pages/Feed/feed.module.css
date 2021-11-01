@@ -10,3 +10,17 @@
     border:0.2rem dotted blue;
     font-size: 2rem;
 }
+.tweet{
+    height: 8rem;
+    border-top: 0.3rem solid rgb(89, 41, 88);
+    
+}
+
+.textarea{
+    padding:0.5rem;
+    min-width:100%;
+    max-width: 100%;
+    max-height: 15rem;
+    min-height: 15rem;
+    height: 15rem;
+}
