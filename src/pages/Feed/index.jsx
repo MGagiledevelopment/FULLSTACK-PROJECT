@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import feedStyles from "../Feed/feed.module.css";
+
 import { firestore } from "../../services/firebase";
-import { collection, getDocs, addDoc, onSnapshot } from "@firebase/firestore";
+import { collection, addDoc, onSnapshot, deleteDoc, doc } from "@firebase/firestore";
 
 export default function Feed() {
   const { text, setText } = useContext(AppContext);
@@ -47,6 +48,11 @@ export default function Feed() {
     setText("");
   };
 
+  // handle para eliminar el tweet //
+  const handleDelete = (tweet) =>{
+    deleteDoc(doc(firestore,"social-network", tweet.id));
+  }
+
   return (
     <div className={feedStyles.feed}>
       <form onSubmit={handleSubmit} className={feedStyles.form}>
@@ -60,6 +66,7 @@ export default function Feed() {
           }}
         ></textarea>
         <button>POST!</button>
+        
       </form>
 
       <div>
@@ -68,6 +75,9 @@ export default function Feed() {
           return (
             <div key={tweet.id}>
               <div className={feedStyles.tweet}>{tweet.text}</div>
+           <button onClick={()=>{
+             handleDelete(tweet)
+           }}>   <i class="fas fa-trash-alt"></i> </button>
             </div>
           );
         })}
