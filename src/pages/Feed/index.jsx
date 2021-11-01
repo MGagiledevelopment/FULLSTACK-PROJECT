@@ -1,16 +1,24 @@
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import feedStyles from "../Feed/feed.module.css";
+import { timeStamp } from "../../utils/index"
 
 import { firestore } from "../../services/firebase";
-import { collection, addDoc, onSnapshot, deleteDoc, doc } from "@firebase/firestore";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  deleteDoc,
+  doc,
+} from "@firebase/firestore";
 
 export default function Feed() {
   const { text, setText } = useContext(AppContext);
   const { tweets, setTweets } = useContext(AppContext);
 
-  const fetchData = () => {
+  console.log(tweets)
 
+  const fetchData = () => {
     // const tweetsCollection = collection(firestore, "social-network");
     // const arrayTweets = [];
 
@@ -21,14 +29,14 @@ export default function Feed() {
     //   setTweets(arrayTweets);
     // });
 
-    const realTime = onSnapshot(
+     onSnapshot(
       collection(firestore, "social-network"),
       (tweets) => {
         const arrayTweets = [];
         tweets.forEach((tweet) => {
-          arrayTweets.push({ ...tweet.data(), id: tweet.id });
+          arrayTweets.push({ ...tweet.data(), id: tweet.id, date: new Date()});
         });
-        setTweets(arrayTweets)
+        setTweets(arrayTweets);
       }
     );
   };
@@ -49,15 +57,15 @@ export default function Feed() {
   };
 
   // handle para eliminar el tweet //
-  const handleDelete = (tweet) =>{
-    deleteDoc(doc(firestore,"social-network", tweet.id));
-  }
+  const handleDelete = (tweet) => {
+    deleteDoc(doc(firestore, "social-network", tweet.id));
+  };
 
   return (
     <div className={feedStyles.feed}>
       <form onSubmit={handleSubmit} className={feedStyles.form}>
         <textarea
-           className={feedStyles.textarea}
+          className={feedStyles.textarea}
           type="text"
           placeholder="What's happening?"
           value={text}
@@ -66,18 +74,34 @@ export default function Feed() {
           }}
         ></textarea>
         <button>POST!</button>
-        
       </form>
 
       <div>
         {tweets.map((tweet) => {
           console.log(tweet.text);
           return (
-            <div key={tweet.id}>
-              <div className={feedStyles.tweet}>{tweet.text}</div>
-           <button onClick={()=>{
-             handleDelete(tweet)
-           }}>   <i class="fas fa-trash-alt"></i> </button>
+            <div className={feedStyles.containerTweet} key={tweet.id}>
+
+
+              <div className={feedStyles.image}>IMAGEN PERFIL</div>
+
+              <div className={feedStyles.contentTweet}>
+                <div className={feedStyles.dataTweet}>
+                  {" "}
+                  <div>USERNAME - {timeStamp(tweet.date)}.</div>{" "}
+                  <button
+                    onClick={() => {
+                      handleDelete(tweet);
+                    }}
+                  >
+                    {" "}
+                    <i className="fas fa-trash-alt"></i>{" "}
+                  </button>
+                </div>
+                <div className={feedStyles.textTweet}>{tweet.text}</div>
+                
+                <div>LIKES</div>
+              </div>
             </div>
           );
         })}

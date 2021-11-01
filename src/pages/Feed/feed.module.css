@@ -1,21 +1,45 @@
 .feed{
     border:0.5rem solid red;
+    height: 100%;
+    background-color: rgb(42,20,43) ;
+    color:white;
 }
 
 .form{
     border:0.2rem dotted purple;
     margin-bottom: 4px;
+    background-color: rgb(19,7,20);
 }
 .tweets{
     border:0.2rem dotted blue;
     font-size: 2rem;
 }
-.tweet{
-    height: 8rem;
+
+.containerTweet{
+    display:flex;
     border-top: 0.3rem solid rgb(89, 41, 88);
+}
+.dataTweet{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0.4rem;
+    border: 1px solid orange
+}
+.textTweet{
+    height: 8rem;
+    
     
 }
 
+.image{
+    border:1px solid blue;
+}
+
+.contentTweet{
+    border:2px solid rgb(153, 252, 126);
+    width:90%;
+}
 .textarea{
     padding:0.5rem;
     min-width:100%;
@@ -23,5 +47,7 @@
     max-height: 15rem;
     min-height: 15rem;
     height: 15rem;
+    background-color: rgb(42,20,43);
+    color:white;
 }
 
