@@ -6,9 +6,9 @@ import Footer from "./containers/Footer/index";
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Main />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

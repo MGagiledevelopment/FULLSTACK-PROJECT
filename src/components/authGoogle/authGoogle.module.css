@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+    background-color: rgb(43,20,43);
+}
+
+
+.button{
+    display:flex;
+    align-items: center;
+}
+.img{
+    padding: 1.4rem;
+    background-color: white;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button img{
+    width:2.5rem;
+    height:2.5rem ;
+    
+}
+.button :nth-child(2){
+    width:20rem;
+    height: 5rem;
+    border-style: none;
+    background-color: rgb(83,131,237);
+    color:white;
+    
+}
