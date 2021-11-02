@@ -13,6 +13,7 @@ export default function NewPost() {
     e.preventDefault();
     addDoc(tweetsCollection, {
       text: text,
+      date: new Date()
     });
     setText("");
   };

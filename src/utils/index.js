@@ -1,8 +1,9 @@
 export const timeStamp =  (date)=>{
-    return date.toLocaleString('en-GB',{
+const prueba = new Date( date * 1000 )
+    return prueba.toLocaleString('en-GB',{
         day: 'numeric',
-        month: 'short'
-    })
+        month: 'short',
+    }) 
 }
 
 

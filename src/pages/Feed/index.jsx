@@ -9,13 +9,13 @@ import { collection, onSnapshot } from "@firebase/firestore";
 export default function Feed() {
   const { setTweets } = useContext(AppContext);
   const { user } = useContext(AppContext);
-  console.log(user.photoURL);
+
 
   const fetchData = () => {
     onSnapshot(collection(firestore, "social-network"), (tweets) => {
       const arrayTweets = [];
       tweets.forEach((tweet) => {
-        arrayTweets.push({ ...tweet.data(), id: tweet.id, date: new Date() });
+        arrayTweets.push({ ...tweet.data(), id: tweet.id });
       });
       setTweets(arrayTweets);
     });

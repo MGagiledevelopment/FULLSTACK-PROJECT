@@ -29,7 +29,7 @@ export default function Post (){
               <div className={feedStyles.contentTweet}>
                 <div className={feedStyles.dataTweet}>
                   {" "}
-                  <div>USERNAME - {timeStamp(tweet.date)}.</div>{" "}
+                  <div>USERNAME - {timeStamp(tweet.date.seconds)} </div>{" "}
                   <button
                     onClick={() => {
                       handleDelete(tweet);
