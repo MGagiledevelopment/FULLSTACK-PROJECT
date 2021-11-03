@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import Feed from "../Feed";
-import AuthGoogle from "../../components/authGoogle/index.jsx";
+import AuthGoogle from "../../components/AuthGoogle/index"
 import { AppContext } from "../../context/AppContext";
 
 export default function Auth() {
-  const { user } = useContext(AppContext);
+  const { customizer } = useContext(AppContext);
 
-  return <div>{!user ? <AuthGoogle /> : <Feed/>}</div>;
+  return <div>{!customizer ? <AuthGoogle /> : <Feed/>}</div>;
 }

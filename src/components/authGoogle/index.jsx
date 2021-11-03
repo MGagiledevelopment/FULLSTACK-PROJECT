@@ -1,19 +1,21 @@
 import React,{useContext} from 'react';
-import authGoogleStyles  from "../authGoogle/authGoogle.module.css"
-import image from "../../images/google.png"
-import logo from "../../images/logo-big.svg"
+import authGoogleStyles  from "../AuthGoogle/authGoogle.module.css";
+import image from "../../images/google.png";
+import logo from "../../images/logo-big.svg";
+import CustomUser from "../CustomUser/index"
 import { AppContext } from "../../context/AppContext";
-
 import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
   } from "@firebase/auth";
-  
+ 
 
 
 export default function AuthGoogle (){
   const { user, setUser } = useContext(AppContext);
+  const {customUser, setCustomUser} = useContext(AppContext);
+
 
     const auth = getAuth();
   const provider = new GoogleAuthProvider();
@@ -47,16 +49,20 @@ export default function AuthGoogle (){
       };
 
     return(
-
-        <div className={authGoogleStyles.container}>
+<>
+{/* le digo aca que si USER esta vacio (es decir antes de hacer la utenticacion,
+  que me rederice la opcion de poder hacerlo, y una vesz que me autentico Y MANDO LOS
+  DATOS A SETUSER, bueno..que me mande a customUser y alli voy a setear customUser para pasar a FEED) */}
+{!user ? (<div className={authGoogleStyles.container}>
             <img src={logo} alt="logo" width="200px"/>
       <div className={authGoogleStyles.button}>
       <div className={authGoogleStyles.img}> <img src={image} alt="logo"/> </div>
       <button  onClick={()=>{
           logIn()
       }}>Sign in with Google</button> </div>
-        </div>
-
+        </div>) : <CustomUser/>}
+        
+</>
     )
 
 }
