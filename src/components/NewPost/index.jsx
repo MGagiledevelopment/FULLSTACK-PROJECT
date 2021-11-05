@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import feedStyles from "../../pages/Feed/feed.module.css";
+import post from "../../images/POST.svg";
 import { firestore } from "../../services/firebase";
 import { collection, addDoc } from "@firebase/firestore";
 
 export default function NewPost() {
-  const { text, setText } = useContext(AppContext);
+  const { text, setText, widthCounter, setWidthCounter } =
+    useContext(AppContext);
 
   // handle para enviar el tweet //
   const handleSubmit = (e) => {
@@ -13,24 +15,57 @@ export default function NewPost() {
     e.preventDefault();
     addDoc(tweetsCollection, {
       text: text,
-      date: new Date()
+      date: new Date(),
     });
     setText("");
+    setWidthCounter(0);
+  };
+
+  // handle para manejar barra width
+  const handleWidth = (e) => {
+    setText(e.target.value);
+    setWidthCounter(e.target.value.length);
+
+    console.log(widthCounter);
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit} className={feedStyles.form}>
-        <textarea
-          className={feedStyles.textarea}
-          type="text"
-          placeholder="What's happening?"
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-        ></textarea>
-        <button>POST!</button>
+        <div className={feedStyles.textarea}>
+          <textarea
+            className={feedStyles.inputTextarea}
+            type="text"
+            placeholder="What's happening?"
+            value={text}
+            onChange={handleWidth}
+            maxLength="200"
+          ></textarea>
+
+          <div
+            className={feedStyles.bar}
+            style={{ width: widthCounter / 2 + "%" }}
+          ></div>
+        </div>
+
+        <div className={feedStyles.counters}>
+          {" "}
+          <div>
+            {" "}
+            {widthCounter === 200 ? (
+              <div className={feedStyles.max}>200 max.</div>
+            ) : (
+              <div>{widthCounter}</div>
+            )}
+          </div>
+        </div>
+
+        <div className={feedStyles.button}>
+          {" "}
+          <button>
+            <img src={post} />
+          </button>
+        </div>
       </form>
     </div>
   );

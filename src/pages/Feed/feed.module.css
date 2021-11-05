@@ -1,53 +1,93 @@
-.feed{
-    border:0.5rem solid red;
-    height: 100%;
-    background-color: rgb(42,20,43) ;
-    color:white;
+.feed {
+  border: 0.5rem solid red;
+  height: 100%;
+  background-color: rgb(42, 20, 43);
+  color: white;
+}
+/* estilos sector input tweet */
+.form {
+  border: 0.2rem dotted purple;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(19, 7, 20);
+}
+.textarea {
+  width: 90%;
+}
+.inputTextarea {
+  padding: 0.5rem;
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 15rem;
+  min-height: 15rem;
+  height: 15rem;
+  background-color: rgb(42, 20, 43);
+  color: white;
+  outline: none;
+  border: none;
 }
 
-.form{
-    border:0.2rem dotted purple;
-    margin-bottom: 4px;
-    background-color: rgb(19,7,20);
-}
-.tweets{
-    border:0.2rem dotted blue;
-    font-size: 2rem;
+.bar {
+  background-color: rgb(99, 215, 128);
+  height: 0.5rem;
+  color: white;
+  max-width: 100%;
 }
 
-.containerTweet{
-    display:flex;
-    border-top: 0.3rem solid rgb(89, 41, 88);
+.counters {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  width: 90%;
 }
-.dataTweet{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:0.4rem;
-    border: 1px solid orange
+.max {
+  color: red;
 }
-.textTweet{
-    height: 8rem;
-    
-    
+.button {
+  display: flex;
+  width: 90%;
+  justify-content: flex-end;
+
+  /* border:5px solid red; */
+}
+.button button {
+  height: 4rem;
+  width: 10rem;
+  border-style: none;
+  background-color: rgb(55, 21, 55);
+}
+.button button:hover {
+  background-color: rgb(70, 23, 70);
+}
+/* estilos sector tweets renderizados */
+.tweets {
+  border: 0.2rem dotted blue;
+  font-size: 2rem;
 }
 
-.image{
-    border:1px solid blue;
+.containerTweet {
+  display: flex;
+  border-top: 0.3rem solid rgb(89, 41, 88);
 }
-
-.contentTweet{
-    border:2px solid rgb(153, 252, 126);
-    width:90%;
+.dataTweet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem;
+  border: 1px solid orange;
 }
-.textarea{
-    padding:0.5rem;
-    min-width:100%;
-    max-width: 100%;
-    max-height: 15rem;
-    min-height: 15rem;
-    height: 15rem;
-    background-color: rgb(42,20,43);
-    color:white;
+.textTweet {
+  height: 8rem;
 }
-
+.image {
+  border: 1px solid blue;
+}
+.contentTweet {
+  border: 2px solid rgb(153, 252, 126);
+  width: 90%;
+}

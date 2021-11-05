@@ -52,7 +52,7 @@ export default function AuthGoogle (){
 <>
 {/* le digo aca que si USER esta vacio (es decir antes de hacer la utenticacion,
   que me rederice la opcion de poder hacerlo, y una vesz que me autentico Y MANDO LOS
-  DATOS A SETUSER, bueno..que me mande a customUser y alli voy a setear customUser para pasar a FEED) */}
+  DATOS A SETUSER, bueno..que me mande a customUser y alli voy a setear customizer para pasar a FEED) */}
 {!user ? (<div className={authGoogleStyles.container}>
             <img src={logo} alt="logo" width="200px"/>
       <div className={authGoogleStyles.button}>
