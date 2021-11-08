@@ -17,6 +17,7 @@ export default function Post (){
     deleteDoc(doc(firestore, "social-network", tweet.id));
   };
 
+
     return(
 <>
 {tweets.map((tweet) => {

@@ -14,7 +14,6 @@ import {
 
 export default function AuthGoogle (){
   const { user, setUser } = useContext(AppContext);
-  const {customUser, setCustomUser} = useContext(AppContext);
 
 
     const auth = getAuth();

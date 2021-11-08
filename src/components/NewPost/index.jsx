@@ -6,7 +6,7 @@ import { firestore } from "../../services/firebase";
 import { collection, addDoc } from "@firebase/firestore";
 
 export default function NewPost() {
-  const { text, setText, widthCounter, setWidthCounter } =
+  const { text, setText, widthCounter, setWidthCounter, user } =
     useContext(AppContext);
 
   // handle para enviar el tweet //
@@ -15,7 +15,9 @@ export default function NewPost() {
     e.preventDefault();
     addDoc(tweetsCollection, {
       text: text,
+      uid:user.uid,
       date: new Date(),
+
     });
     setText("");
     setWidthCounter(0);
@@ -25,8 +27,6 @@ export default function NewPost() {
   const handleWidth = (e) => {
     setText(e.target.value);
     setWidthCounter(e.target.value.length);
-
-    console.log(widthCounter);
   };
 
   return (
