@@ -6,16 +6,17 @@ import { firestore } from "../../services/firebase";
 import { collection, addDoc } from "@firebase/firestore";
 
 export default function NewPost() {
-  const { text, setText, widthCounter, setWidthCounter, user } =
-    useContext(AppContext);
+  const { text, setText, widthCounter, setWidthCounter, user, customizer } = useContext(AppContext);
 
   // handle para enviar el tweet //
   const handleSubmit = (e) => {
     const tweetsCollection = collection(firestore, "social-network");
     e.preventDefault();
     addDoc(tweetsCollection, {
+      author: customizer,
       text: text,
       uid:user.uid,
+      photo:user.photoURL,
       date: new Date(),
 
     });
