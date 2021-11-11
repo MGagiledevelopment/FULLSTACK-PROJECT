@@ -1,0 +1,8 @@
+.container{
+padding:0.5rem;
+}
+
+.container img{
+    border-radius: 50rem;
+    width:3rem;
+}

@@ -15,6 +15,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 
+
+
 // entre medio de estas dos lineas van las lineas de AUTENTICACION
 
 

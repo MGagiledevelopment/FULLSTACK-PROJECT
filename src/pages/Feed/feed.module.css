@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .feed {
   border: 0.5rem solid red;
   height: 100%;
@@ -74,6 +76,8 @@
   display: flex;
   border-top: 0.3rem solid rgb(89, 41, 88);
 }
+
+
 .dataTweet {
   display: flex;
   justify-content: space-between;
@@ -85,7 +89,18 @@
   height: 8rem;
 }
 .image {
-  border: 1px solid blue;
+  border-radius: 10rem;
+  margin: 1rem;
+
+}
+.username {
+  display: flex;
+  align-items: center;
+}
+.username h6 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  margin-right: 1rem;
 }
 .contentTweet {
   border: 2px solid rgb(153, 252, 126);

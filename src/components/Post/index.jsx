@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
+import feedStyles from "../../pages/Feed/feed.module.css";
 import { timeStamp } from "../../utils/index";
 import { AppContext } from "../../context/AppContext";
-import feedStyles from "../../pages/Feed/feed.module.css";
 import { firestore } from "../../services/firebase";
 import { deleteDoc, doc } from "@firebase/firestore";
 
@@ -16,20 +16,21 @@ export default function Post() {
   return (
     <>
       {tweets.map((tweet) => {
-      
         return (
           <div className={feedStyles.containerTweet} key={tweet.id}>
-            <img
-              className={feedStyles.image}
-              src={tweet.photo}
-              alt="profile"
-            />
-
+            <div>
+              <img
+                className={feedStyles.image}
+                src={tweet.photo}
+                alt="profile"
+                width="50rem"
+              />
+            </div>
             <div className={feedStyles.contentTweet}>
               <div className={feedStyles.dataTweet}>
                 {" "}
-                <div>
-                  {tweet.author} - {timeStamp(tweet.date.seconds)}{" "}
+                <div className={feedStyles.username}>
+                  <h6>{tweet.author}</h6> - {timeStamp(tweet.date.seconds)}{" "}
                 </div>{" "}
                 {/* renderizado condicional del boton delete */}
                 {user.uid === tweet.uid ? (
@@ -44,7 +45,6 @@ export default function Post() {
                 ) : (
                   <></>
                 )}
-                
               </div>
               <div className={feedStyles.textTweet}>{tweet.text}</div>
 

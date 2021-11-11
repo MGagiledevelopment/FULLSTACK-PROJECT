@@ -1,28 +1,31 @@
-import React,{useContext} from 'react';
+import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
-
-export default function CustomUser (){
-    const { customizer ,setCustomizer} = useContext(AppContext)
-    const {input, setInput} = useContext(AppContext)
-
+import logo from "../../images/logo-big.svg";
+import customStyles from "../CustomUser/custom.module.css";
+export default function CustomUser() {
+  const { customizer, setCustomizer } = useContext(AppContext);
+  const { input, setInput } = useContext(AppContext);
 
   const handleInput = (e) => {
- setInput(e.target.value)
-  }
+    setInput(e.target.value);
+  };
 
-    const handleButton = () =>{
-        setCustomizer(input)
-    }
+  const handleButton = () => {
+    setCustomizer(input);
+  };
 
-    return(
-
-        <div>
-            <form><input type="text" onChange={handleInput}/> 
-            <button onClick={handleButton}>CONTINUAR</button></form>
-            
-            </div>
-        
-
-    )
-
+  return (
+    <div className={customStyles.container}>
+      <img src={logo} alt="logo" width="200px" />
+      <form>
+        <input
+          type="text"
+          onChange={handleInput}
+          placeholder="Type your username"
+        />
+        <div >Select your favorite color</div>
+        <button onClick={handleButton}>CONTINUE</button>
+      </form>
+    </div>
+  );
 }
