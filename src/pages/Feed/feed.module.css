@@ -106,3 +106,13 @@
   border: 2px solid rgb(153, 252, 126);
   width: 90%;
 }
+
+
+.likes{
+  display: flex;
+  align-items: center;
+}
+
+.likes p{
+  margin-left: 1rem;
+}

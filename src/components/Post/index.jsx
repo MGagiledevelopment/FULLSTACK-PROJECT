@@ -3,19 +3,35 @@ import feedStyles from "../../pages/Feed/feed.module.css";
 import { timeStamp } from "../../utils/index";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
-import { deleteDoc, doc } from "@firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "@firebase/firestore";
 
 export default function Post() {
-  const { tweets, setTweets } = useContext(AppContext);
+  const { tweets } = useContext(AppContext);
   const { user } = useContext(AppContext);
-
+  const {like, setLike}= useContext(AppContext);
   const handleDelete = (tweet) => {
     deleteDoc(doc(firestore, "social-network", tweet.id));
   };
 
+const handleFavorite = (tweet) =>{
+updateDoc(doc(firestore, "social-network", tweet.id),{
+  counter: typeof tweet.counter === "number" ? tweet.counter + 1 : 1,
+  state: true
+})
+}
+
+const handleDesfavorite = (tweet) =>{
+  updateDoc(doc(firestore, "social-network", tweet.id),{
+    counter: typeof tweet.counter === "number" ? tweet.counter - 1 : <></>,
+    state:false
+  })
+  }
+
+
   return (
     <>
       {tweets.map((tweet) => {
+        
         return (
           <div className={feedStyles.containerTweet} key={tweet.id}>
             <div>
@@ -32,6 +48,8 @@ export default function Post() {
                 <div className={feedStyles.username}>
                   <h6>{tweet.author}</h6> - {timeStamp(tweet.date.seconds)}{" "}
                 </div>{" "}
+
+                
                 {/* renderizado condicional del boton delete */}
                 {user.uid === tweet.uid ? (
                   <button
@@ -47,8 +65,13 @@ export default function Post() {
                 )}
               </div>
               <div className={feedStyles.textTweet}>{tweet.text}</div>
+               <div className={feedStyles.likes}>
 
-              <div>LIKES</div>
+                 {tweet.state === true ?  <button onClick={()=>{handleDesfavorite(tweet)}}>DESFAVORITO</button> : <button onClick={()=>{handleFavorite(tweet)}}>FAVORITO</button>
+}
+             
+              <p>{tweet.counter}</p>
+              </div>
             </div>
           </div>
         );

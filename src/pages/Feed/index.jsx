@@ -9,8 +9,6 @@ import { collection, onSnapshot } from "@firebase/firestore";
 
 export default function Feed() {
   const { setTweets } = useContext(AppContext);
-  const { user } = useContext(AppContext);
-
 
   const fetchData = () => {
     onSnapshot(collection(firestore, "social-network"), (tweets) => {

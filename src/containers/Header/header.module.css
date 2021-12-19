@@ -1,8 +1,24 @@
-.container{
-padding:0.5rem;
+.container {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.container img{
-    border-radius: 50rem;
-    width:3rem;
+.img {
+  border-radius: 50rem;
+  width: 3rem;
+}
+.container div {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-evenly; */
+  width: 15rem;
+}
+.container div :nth-child(1) {
+  width: 5rem;
+  margin-right: 0.5rem;
+}
+.container div :nth-child(2) {
+  width: 7rem;
 }

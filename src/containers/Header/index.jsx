@@ -8,8 +8,8 @@ const {user} =useContext(AppContext)
 console.log(user)
     return(
 <div className={headerStyles.container}>
-        <img src={user.photoURL} alt="profile"/>
-        <div><img src={titleIcon1}/>  <img src={titleIcon2}/> </div>
+        <img className={headerStyles.img} src={user.photoURL} alt="profile"/>
+        <div><img src={titleIcon1} /> <img src={titleIcon2}/> </div>
 </div>
     )
 

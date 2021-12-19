@@ -8,6 +8,8 @@ import { collection, addDoc } from "@firebase/firestore";
 export default function NewPost() {
   const { text, setText, widthCounter, setWidthCounter, user, customizer } = useContext(AppContext);
 
+ console.log(customizer)
+
   // handle para enviar el tweet //
   const handleSubmit = (e) => {
     const tweetsCollection = collection(firestore, "social-network");
