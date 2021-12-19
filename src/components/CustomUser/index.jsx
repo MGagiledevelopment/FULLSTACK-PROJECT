@@ -37,13 +37,12 @@ console.log(color)
 
     return (
       <div>
-      <label htmlFor="colorOp.name" name="colors"></label>
+      <label  htmlFor="colorOp.name" name="colors"><div className={customStyles.label}  style={{backgroundColor:`${colorOp.cod}`, outline:`${color === colorOp.cod ? '.3rem solid #fff' : 'none'}`}}></div></label>
       <input onClick={colorHandler} type="radio" value ={colorOp.cod} name="colors" />
       </div>
     )
   })
 
-  // console.log(colorOptions)
   
   return (
     <div className={customStyles.container}>
