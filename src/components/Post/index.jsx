@@ -4,6 +4,7 @@ import { timeStamp } from "../../utils/index";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
 import { deleteDoc, doc, updateDoc } from "@firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 export default function Post() {
   const { tweets } = useContext(AppContext);
@@ -27,6 +28,9 @@ const handleDesfavorite = (tweet) =>{
   })
   }
 
+//  const auth = getAuth()
+//  const uid = auth.currentUser.uid
+//  console.log(uid)
 
   return (
     <>
@@ -37,6 +41,10 @@ const handleDesfavorite = (tweet) =>{
             <div>
               <img
                 className={feedStyles.image}
+                style={{ 
+                  //  border: `${ uid === user.uid ? `.5rem solid ${user.color}` : "none"}` 
+                  border: `.5rem solid ${user.color}`
+              }}
                 src={tweet.photo}
                 alt="profile"
                 width="50rem"

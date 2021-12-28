@@ -14,8 +14,6 @@ import { colors } from "../../utils/colors";
 import customStyles from "../CustomUser/custom.module.css";
 export default function CustomUser() {
   const {
-    input,
-    setInput,
     user,
     setUser,
     usernames,
@@ -24,18 +22,23 @@ export default function CustomUser() {
     color,
   } = useContext(AppContext);
   console.log(color);
+  console.log(usernames)
   const handleInput = (e) => {
     setUsernames(e.target.value);
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const document = doc(firestore, "users", user.id);
     console.log(document);
     await updateDoc(document, {
       username: usernames,
-      color: "aqui va el color",
+      color: color,
+
     });
+    const snapshot = await getDoc(document)
+    setUser({ id: snapshot.id, ...snapshot.data() })
+    
   };
 
   const colorOptions = colors.map((colorOp) => {
@@ -44,9 +47,9 @@ export default function CustomUser() {
     };
 
     return (
-      <div >
-        <label htmlFor="colorOp.name" name="colors">
-          <div
+      <div>
+        <label  name="col" htmlFor={colorOp.name}>
+          <div 
             className={customStyles.label}
             style={{
               backgroundColor: `${colorOp.cod}`,
@@ -60,7 +63,7 @@ export default function CustomUser() {
           className={customStyles.input}
           type="radio"
           value={colorOp.cod}
-          name="colors"
+          name="col"
         />
       </div>
     );
@@ -77,7 +80,7 @@ export default function CustomUser() {
         />
         <div>Select your favorite color</div>
         <div className={customStyles.colors}>{colorOptions}</div>
-        <button>CONTINUE</button>
+        {!usernames || !color  ? <button onClick={handleSubmit} style={{background:"rgba(99, 215, 128, 0.650)"}} disabled>CONTINUE</button> : <button>CONTINUE</button> }
       </form>
     </div>
   );

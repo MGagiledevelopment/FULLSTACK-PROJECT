@@ -15,10 +15,10 @@ export default function NewPost() {
     const tweetsCollection = collection(firestore, "social-network");
     e.preventDefault();
     addDoc(tweetsCollection, {
-      author: customizer,
+      author: user.username,
       text: text,
       uid:user.uid,
-      photo:user.photoURL,
+      photo:user.photo,
       date: new Date(),
 
     });
