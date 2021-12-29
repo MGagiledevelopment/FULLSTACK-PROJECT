@@ -43,7 +43,7 @@ const handleDesfavorite = (tweet) =>{
                 className={feedStyles.image}
                 style={{ 
                   //  border: `${ uid === user.uid ? `.5rem solid ${user.color}` : "none"}` 
-                  border: `.5rem solid ${user.color}`
+                  border: `.5rem solid ${tweet.color}`
               }}
                 src={tweet.photo}
                 alt="profile"

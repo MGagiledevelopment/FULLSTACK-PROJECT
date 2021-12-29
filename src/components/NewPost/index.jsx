@@ -19,6 +19,7 @@ export default function NewPost() {
       text: text,
       uid:user.uid,
       photo:user.photo,
+      color:user.color,
       date: new Date(),
 
     });
