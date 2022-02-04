@@ -1,36 +1,23 @@
 import React, { useContext } from "react";
 import feedStyles from "../../pages/Feed/feed.module.css";
+import Likesbtn from "../Likes/Likesbtn";
 import { timeStamp } from "../../utils/index";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
-import { deleteDoc, doc, updateDoc } from "@firebase/firestore";
+import { deleteDoc, doc, updateDoc} from "@firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 export default function Post() {
   const { tweets } = useContext(AppContext);
-  const { user } = useContext(AppContext);
-  const {like, setLike}= useContext(AppContext);
+  const { user} = useContext(AppContext);
+  const {likes, setLikes}= useContext(AppContext);
+  console.log(user.id)
   const handleDelete = (tweet) => {
     deleteDoc(doc(firestore, "social-network", tweet.id));
   };
 
-const handleFavorite = (tweet) =>{
-updateDoc(doc(firestore, "social-network", tweet.id),{
-  counter: typeof tweet.counter === "number" ? tweet.counter + 1 : 1,
-  state: true
-})
-}
-
-const handleDesfavorite = (tweet) =>{
-  updateDoc(doc(firestore, "social-network", tweet.id),{
-    counter: typeof tweet.counter === "number" ? tweet.counter - 1 : <></>,
-    state:false
-  })
-  }
-
-//  const auth = getAuth()
-//  const uid = auth.currentUser.uid
-//  console.log(uid)
+  const isLiked = () => likes.includes(user.uid)
+  
 
   return (
     <>
@@ -42,7 +29,6 @@ const handleDesfavorite = (tweet) =>{
               <img
                 className={feedStyles.image}
                 style={{ 
-                  //  border: `${ uid === user.uid ? `.5rem solid ${user.color}` : "none"}` 
                   border: `.5rem solid ${tweet.color}`
               }}
                 src={tweet.photo}
@@ -75,10 +61,10 @@ const handleDesfavorite = (tweet) =>{
               <div className={feedStyles.textTweet}>{tweet.text}</div>
                <div className={feedStyles.likes}>
 
-                 {tweet.state === true ?  <button onClick={()=>{handleDesfavorite(tweet)}}>DESFAVORITO</button> : <button onClick={()=>{handleFavorite(tweet)}}>FAVORITO</button>
-}
+              <Likesbtn id={user.id} isLiked={isLiked}/>
+              
              
-              <p>{tweet.counter}</p>
+              <p>{likes.length}</p>
               </div>
             </div>
           </div>
@@ -86,4 +72,4 @@ const handleDesfavorite = (tweet) =>{
       })}
     </>
   );
-}
+    }

@@ -20,6 +20,7 @@ export default function NewPost() {
       uid:user.uid,
       photo:user.photo,
       color:user.color,
+      likes:[],
       date: new Date(),
 
     });
@@ -33,6 +34,7 @@ export default function NewPost() {
     setWidthCounter(e.target.value.length);
   };
 
+  
   return (
     <div>
       <form onSubmit={handleSubmit} className={feedStyles.form}>
@@ -42,7 +44,7 @@ export default function NewPost() {
             type="text"
             placeholder="What's happening?"
             value={text}
-            onChange={handleWidth}
+            onChange={handleWidth}  
             maxLength="200"
           ></textarea>
 

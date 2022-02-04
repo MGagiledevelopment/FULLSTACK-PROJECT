@@ -13,12 +13,15 @@ export const AppProvider  = (props) =>{
     const [usernames, setUsernames] =  useState("")
     const [loading, setLoading] = useState(false)
     const [color, setColor] = useState("")
-    const [like, setLike] = useState(false)
+    const [likes, setLikes] = useState([])
+    const [isLiked, setIsLiked] = useState(false)
+   
 
 
     return (
-        <AppContext.Provider value={{ text,setText, tweets, setTweets,user, setUser,customizer, setCustomizer,input,setInput, widthCounter, setWidthCounter, data, setData,usernames,setUsernames,loading,setLoading, color, setColor }}>
+        <AppContext.Provider value={{ text,setText, tweets, setTweets,user, setUser,customizer, setCustomizer,input,setInput, widthCounter, setWidthCounter, data, setData,usernames,setUsernames,loading,setLoading, color, setColor, likes, setLikes, isLiked, setIsLiked}}>
             {props.children}
         </AppContext.Provider>
     );
 }
+
