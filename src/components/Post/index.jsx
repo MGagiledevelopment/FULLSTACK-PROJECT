@@ -4,33 +4,28 @@ import Likesbtn from "../Likes/Likesbtn";
 import { timeStamp } from "../../utils/index";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
-import { deleteDoc, doc, updateDoc} from "@firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { deleteDoc, doc } from "@firebase/firestore";
 
 export default function Post() {
-  const { tweets } = useContext(AppContext);
-  const { user} = useContext(AppContext);
-  const {likes, setLikes}= useContext(AppContext);
-  console.log(user.id)
+  const { likes, user, tweets } = useContext(AppContext);
+
   const handleDelete = (tweet) => {
     deleteDoc(doc(firestore, "social-network", tweet.id));
   };
 
-  const isLiked = () => likes.includes(user.uid)
-  
+  const isLiked = () => likes.includes(user.uid);
 
   return (
     <>
       {tweets.map((tweet) => {
-        
         return (
           <div className={feedStyles.containerTweet} key={tweet.id}>
             <div>
               <img
                 className={feedStyles.image}
-                style={{ 
-                  border: `.5rem solid ${tweet.color}`
-              }}
+                style={{
+                  border: `.5rem solid ${tweet.color}`,
+                }}
                 src={tweet.photo}
                 alt="profile"
                 width="50rem"
@@ -42,8 +37,6 @@ export default function Post() {
                 <div className={feedStyles.username}>
                   <h6>{tweet.author}</h6> - {timeStamp(tweet.date.seconds)}{" "}
                 </div>{" "}
-
-                
                 {/* renderizado condicional del boton delete */}
                 {user.uid === tweet.uid ? (
                   <button
@@ -59,12 +52,9 @@ export default function Post() {
                 )}
               </div>
               <div className={feedStyles.textTweet}>{tweet.text}</div>
-               <div className={feedStyles.likes}>
-
-              <Likesbtn id={user.id} isLiked={isLiked}/>
-              
-             
-              <p>{likes.length}</p>
+              <div className={feedStyles.likes}>
+                <Likesbtn tweet={tweet} isLiked={isLiked} />
+                <p>{tweet.likes.length}</p>
               </div>
             </div>
           </div>
@@ -72,4 +62,4 @@ export default function Post() {
       })}
     </>
   );
-    }
+}
