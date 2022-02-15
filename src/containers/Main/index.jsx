@@ -1,11 +1,17 @@
 import React from "react";
-import Feed from "../../pages/Feed/index";
+import { Routes, Route} from "react-router-dom";
 import Auth from "../../pages/Auth/index";
+import Profile from "../../pages/Profile";
 
 export default function Main() {
-  return (
-    <div>
-      <Auth />
-    </div>
+  return (<>
+      {/* <Auth/> */}
+      <Routes>
+      <Route path="/" component = {Auth}></Route>
+      <Route path="/profile" component = {Profile}></Route>
+      </Routes>
+      
+      </>
+    
   );
 }

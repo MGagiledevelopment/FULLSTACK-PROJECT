@@ -7,17 +7,15 @@ import { firestore } from "../../services/firebase";
 import { deleteDoc, doc } from "@firebase/firestore";
 
 export default function Post() {
-  const { likes, user, tweets } = useContext(AppContext);
-
+  const { user, tweets } = useContext(AppContext);
   const handleDelete = (tweet) => {
     deleteDoc(doc(firestore, "social-network", tweet.id));
   };
 
-  const isLiked = () => likes.includes(user.uid);
-
   return (
     <>
       {tweets.map((tweet) => {
+        const isLiked = () => tweet.likes.includes(user.uid);
         return (
           <div className={feedStyles.containerTweet} key={tweet.id}>
             <div>
@@ -53,7 +51,7 @@ export default function Post() {
               </div>
               <div className={feedStyles.textTweet}>{tweet.text}</div>
               <div className={feedStyles.likes}>
-                <Likesbtn tweet={tweet} isLiked={isLiked} />
+                <Likesbtn tweet={tweet} isLiked={isLiked} id={tweet.id} />
                 <p>{tweet.likes.length}</p>
               </div>
             </div>

@@ -12,10 +12,10 @@ import { FcLikePlaceholder } from "react-icons/fc";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
 
-export default function Likesbtn({ isLiked, tweet }) {
+export default function Likesbtn({ isLiked, tweet}) {
   const { user } = useContext(AppContext);
   const [like, setLike] = useState(isLiked);
-
+  console.log(tweet.id)
   const handleLikes = () => {
     const postRef = doc(firestore, "social-network", tweet.id);
 
