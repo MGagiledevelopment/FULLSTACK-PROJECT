@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Feed from "../Feed";
+import Home from "../Home/index"
 import AuthGoogle from "../../components/AuthGoogle/index";
 import CustomUser from "../../components/CustomUser";
 import { AppContext } from "../../context/AppContext";
@@ -15,7 +16,7 @@ export default function Auth() {
       ) : !user.color || !user.username ? (
         <CustomUser />
       ) : (
-        <Feed />
+        <Home/>
       )}
     </div>
     

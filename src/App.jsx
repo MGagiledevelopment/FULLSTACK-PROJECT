@@ -1,13 +1,24 @@
-import React from "react";
-import Main from "./containers/Main/index";
-import Footer from "./containers/Footer/index";
+import React, { useContext } from "react";
+import Home from "./pages/Home";
+import AuthGoogle from "../src/components/AuthGoogle/index";
+import CustomUser from "../src/components/CustomUser/index"
+import { AppContext } from "../src/context/AppContext"
 
 function App() {
+  const { user } = useContext(AppContext);
+
   return (
     <div className="App">
-      {/* <Header /> */}
-      <Main />
-      {/* <Footer /> */}
+
+<div>
+      {!user.uid ? (
+        <AuthGoogle />
+      ) : !user.color || !user.username ? (
+        <CustomUser />
+      ) : (
+        <Home />
+      )}
+    </div>
     </div>
   );
 }

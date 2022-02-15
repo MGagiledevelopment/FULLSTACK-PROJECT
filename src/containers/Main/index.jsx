@@ -5,11 +5,11 @@ import Profile from "../../pages/Profile";
 
 export default function Main() {
   return (<>
-      {/* <Auth/> */}
-      <Routes>
+      <Auth/>
+      {/* <Routes>
       <Route path="/" component = {Auth}></Route>
       <Route path="/profile" component = {Profile}></Route>
-      </Routes>
+      </Routes> */}
       
       </>
     
