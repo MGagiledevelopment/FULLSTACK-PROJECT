@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Home from "./pages/Home";
-import AuthGoogle from "../src/components/AuthGoogle/index";
-import CustomUser from "../src/components/CustomUser/index"
-import { AppContext } from "../src/context/AppContext"
+import AuthGoogle from "./components/authGoogle/index.jsx";
+import CustomUser from "../src/components/CustomUser/index";
+import { AppContext } from "../src/context/AppContext";
 
 function App() {
   const { user } = useContext(AppContext);

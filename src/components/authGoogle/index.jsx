@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import authGoogleStyles from "../AuthGoogle/authGoogle.module.css";
+import authGoogleStyles from "../authGoogle/authGoogle.module.css";
 import image from "../../images/google.png";
 import logo from "../../images/logo-big.svg";
 import ClipLoader from "react-spinners/ClipLoader";

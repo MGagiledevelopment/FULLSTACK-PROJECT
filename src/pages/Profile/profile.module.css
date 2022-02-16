@@ -1,0 +1,23 @@
+.image{
+    border-radius: 10rem;
+    margin-top: 5rem;
+}
+
+.nameContainer{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+.nameContainer h4{
+    font-family: "Press Start 2P", cursive;
+    letter-spacing: 0.2rem;
+    margin-top: 1rem;
+    height: 3rem;
+    padding:1rem;
+    border-radius: 0.4rem;
+    font-size: 1.5rem;
+    color:black;
+    text-transform:uppercase;
+}
