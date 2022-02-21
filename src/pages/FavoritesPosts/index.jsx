@@ -1,20 +1,30 @@
-import React, { useContext } from "react";
-import feedStyles from "../../pages/Feed/feed.module.css";
-import Likesbtn from "../Likes/Likesbtn";
-import { timeStamp } from "../../utils/index";
+
+import { React, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
-import { deleteDoc, doc } from "@firebase/firestore";
+import useFetchData from "../../hooks/useFetchData";
+import feedStyles from "../Feed/feed.module.css"
+import { timeStamp } from "../../utils";
+import { deleteDoc, doc } from "firebase/firestore";
+import Likesbtn from "../../components/Likes/Likesbtn";
 
-export default function Post() {
-  const { user, tweets } = useContext(AppContext);
+
+export default function FavoritePosts() {
+  const { user } = useContext(AppContext);
+  const [data] = useFetchData(firestore, "social-network");
+
+  const filtered = data.filter((post) => {
+    return post.likes.includes(user.uid)
+  });
+
   const handleDelete = (tweet) => {
     deleteDoc(doc(firestore, "social-network", tweet.id));
   };
- 
+
+
   return (
     <>
-      {tweets.map((tweet) => {
+     {filtered.map((tweet) => {
         const isLiked = () => tweet.likes.includes(user.uid);
         return (
           <div className={feedStyles.containerTweet} key={tweet.id}>

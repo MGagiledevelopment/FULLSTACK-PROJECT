@@ -6,7 +6,8 @@ import Post from "../../components/Post/index";
 import Header from "../../containers/Header/index";
 import { firestore } from "../../services/firebase";
 import { collection, onSnapshot } from "@firebase/firestore";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import useFetchData from "../../hooks/useFetchData";
 
 export default function Feed() {
   const { setTweets } = useContext(AppContext);
@@ -28,7 +29,7 @@ export default function Feed() {
 
   return (
     <div className={feedStyles.feed}>
-      <Header/>
+      <Header />
       <NewPost />
       <Post />
     </div>

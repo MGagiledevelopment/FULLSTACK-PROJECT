@@ -2,15 +2,14 @@ import {
   arrayUnion,
   updateDoc,
   doc,
-  arrayRemove,
-  setDoc,
-  collection,
+  arrayRemove
 } from "@firebase/firestore";
 import { useContext, useState, React } from "react";
 import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
+import feedStyles from "../../pages/Feed/feed.module.css";
 
 export default function Likesbtn({ isLiked, tweet}) {
   const { user } = useContext(AppContext);
@@ -33,7 +32,7 @@ export default function Likesbtn({ isLiked, tweet}) {
   };
 
   return (
-    <button onClick={handleLikes}>
+    <button className={feedStyles.buttonLike} onClick={handleLikes}>
       {like ? <FcLike /> : <FcLikePlaceholder />}
     </button>
   );
