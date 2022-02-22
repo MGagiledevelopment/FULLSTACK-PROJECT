@@ -9,17 +9,32 @@ export default function Header() {
   console.log(user);
   return (
     <div className={headerStyles.container}>
-     <Link to="/profile"> <img
-        className={headerStyles.img}
-        style={{
-          border: `.3rem solid ${user.color}`,
-        }}
-        src={user.photo}
-        alt="profile"
-      /></Link>
-      <div>
-        <img src={titleIcon1} /> <img src={titleIcon2} />{" "}
+
+
+
+      <div className={headerStyles.container2}>
+
+        <Link to="/profile">
+          {" "}
+          <img
+            className={headerStyles.img}
+            style={{
+              border: `.3rem solid ${user.color}`,
+            }}
+            src={user.photo}
+            alt="profile"
+          />
+        </Link>
+
+
+        <div>
+          <img src={titleIcon1} /> <img src={titleIcon2} />{" "}
+        </div>
+
+        
       </div>
+
+
     </div>
   );
 }

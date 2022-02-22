@@ -7,12 +7,20 @@ import profileStyles from "../Profile/profile.module.css";
 
 export default function Profile() {
   const [section, setSection] = useState("posts");
-  const { user, tweet } = useContext(AppContext);
+  const { user} = useContext(AppContext);
+
+  const handleColor = (state) => {
+    if (section === state) {
+      return { backgroundColor: '#60263B' }
+    } else {
+      return
+    }
+  }
 
   return (
     <>
       <NavbarProfile />
-      <div>
+      <div className={profileStyles.container}>
         <div className={profileStyles.nameContainer}>
           <img
             className={profileStyles.image}
@@ -26,14 +34,14 @@ export default function Profile() {
         </div>
         <nav className={profileStyles.nav}>
           <ul>
-            <li
+            <li style = {handleColor('posts')}
               onClick={() => {
                 setSection("posts");
               }}
             >
               POSTS
             </li>
-            <li
+            <li style = {handleColor('favs')}
               onClick={() => {
                 setSection("favs");
               }}

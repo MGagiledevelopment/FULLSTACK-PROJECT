@@ -13,7 +13,7 @@ export default function Post() {
   };
  
   return (
-    <>
+    <div className={feedStyles.containerTweets}>
       {tweets.map((tweet) => {
         const isLiked = () => tweet.likes.includes(user.uid);
         return (
@@ -61,6 +61,6 @@ export default function Post() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

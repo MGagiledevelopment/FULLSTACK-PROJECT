@@ -1,30 +1,27 @@
-
 import { React, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
 import useFetchData from "../../hooks/useFetchData";
-import feedStyles from "../Feed/feed.module.css"
+import feedStyles from "../Feed/feed.module.css";
 import { timeStamp } from "../../utils";
 import { deleteDoc, doc } from "firebase/firestore";
 import Likesbtn from "../../components/Likes/Likesbtn";
-
 
 export default function FavoritePosts() {
   const { user } = useContext(AppContext);
   const [data] = useFetchData(firestore, "social-network");
 
   const filtered = data.filter((post) => {
-    return post.likes.includes(user.uid)
+    return post.likes.includes(user.uid);
   });
 
   const handleDelete = (tweet) => {
     deleteDoc(doc(firestore, "social-network", tweet.id));
   };
 
-
   return (
-    <>
-     {filtered.map((tweet) => {
+    <div className={feedStyles.containerTweets}>
+      {filtered.map((tweet) => {
         const isLiked = () => tweet.likes.includes(user.uid);
         return (
           <div className={feedStyles.containerTweet} key={tweet.id}>
@@ -50,7 +47,8 @@ export default function FavoritePosts() {
                 </div>{" "}
                 {/* renderizado condicional del boton delete */}
                 {user.uid === tweet.uid ? (
-                  <button className={feedStyles.buttonDelete}
+                  <button
+                    className={feedStyles.buttonDelete}
                     onClick={() => {
                       handleDelete(tweet);
                     }}
@@ -71,6 +69,6 @@ export default function FavoritePosts() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

@@ -2,23 +2,40 @@
   padding: 0.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.container2 {
+  width: 84%;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+@media screen and (min-width: 700px) {
+  .container2 {
+    width: 60%;
+  }
+
+  .container2 :nth-child(1) {
+    width: 5rem;
+  }
 }
 
 .img {
   border-radius: 50rem;
-  width: 3rem;
+  width: 3.3rem;
 }
-.container div {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-evenly; */
-  width: 15rem;
-}
-.container div :nth-child(1) {
+
+.container2 div :nth-child(1) {
   width: 5rem;
   margin-right: 0.5rem;
 }
-.container div :nth-child(2) {
+.container2 div :nth-child(2) {
   width: 7rem;
+}
+
+.container2 div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
