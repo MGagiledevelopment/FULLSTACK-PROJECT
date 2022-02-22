@@ -12,13 +12,12 @@ import {
   setPersistence,
   browserSessionPersistence,
 } from "@firebase/auth";
-import { addDoc, collection, getDocs, onSnapshot } from "@firebase/firestore";
+import { addDoc, collection} from "@firebase/firestore";
 import { firestore } from "../../services/firebase";
 
 export default function AuthGoogle() {
   const { data, setData, setUser, loading, setLoading } =
     useContext(AppContext);
-  console.log(loading);
   const auth = getAuth();
 
   const handlePersist = async () => {

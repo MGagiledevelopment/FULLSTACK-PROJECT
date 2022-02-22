@@ -1,9 +1,4 @@
-import {
-  arrayUnion,
-  updateDoc,
-  doc,
-  arrayRemove
-} from "@firebase/firestore";
+import { arrayUnion, updateDoc, doc, arrayRemove } from "@firebase/firestore";
 import { useContext, useState, React } from "react";
 import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc";
@@ -11,12 +6,11 @@ import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
 import feedStyles from "../../pages/Feed/feed.module.css";
 
-export default function Likesbtn({ isLiked, tweet}) {
+export default function Likesbtn({ isLiked, tweet }) {
   const { user } = useContext(AppContext);
   const [like, setLike] = useState(isLiked);
-  console.log(tweet.id)
   const handleLikes = () => {
-    const postRef = doc(firestore, "social-network", tweet.id);
+  const postRef = doc(firestore, "social-network", tweet.id);
 
     if (!like) {
       updateDoc(postRef, {

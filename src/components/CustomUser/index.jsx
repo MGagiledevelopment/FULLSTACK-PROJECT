@@ -1,46 +1,29 @@
-import {
-  addDoc,
-  collection,
-  doc,
-  onSnapshot,
-  updateDoc,
-  getDoc,
-} from "@firebase/firestore";
-import React, { useContext, useEffect } from "react";
+import { doc, updateDoc, getDoc } from "@firebase/firestore";
+import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import logo from "../../images/logo-big.svg";
 import { firestore } from "../../services/firebase";
 import { colors } from "../../utils/colors";
 import customStyles from "../CustomUser/custom.module.css";
 export default function CustomUser() {
-  const {
-    user,
-    setUser,
-    usernames,
-    setUsernames,
-    setColor,
-    color,
-  } = useContext(AppContext);
+  const { user, setUser, usernames, setUsernames, setColor, color } =
+    useContext(AppContext);
   console.log(color);
-  console.log(usernames)
+  console.log(usernames);
   const handleInput = (e) => {
     setUsernames(e.target.value);
   };
 
-
-
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const document = doc(firestore, "users", user.id);
     console.log(document);
     await updateDoc(document, {
       username: usernames,
       color: color,
-
     });
-    const snapshot = await getDoc(document)
-    setUser({ id: snapshot.id, ...snapshot.data() })
-    
+    const snapshot = await getDoc(document);
+    setUser({ id: snapshot.id, ...snapshot.data() });
   };
 
   const colorOptions = colors.map((colorOp) => {
@@ -50,8 +33,8 @@ export default function CustomUser() {
 
     return (
       <div>
-        <label  name="col" htmlFor={colorOp.name}>
-          <div 
+        <label name="col" htmlFor={colorOp.name}>
+          <div
             className={customStyles.label}
             style={{
               backgroundColor: `${colorOp.cod}`,
@@ -82,7 +65,17 @@ export default function CustomUser() {
         />
         <div>Select your favorite color</div>
         <div className={customStyles.colors}>{colorOptions}</div>
-        {!usernames || !color  ? <button onClick={handleSubmit} style={{background:"rgba(99, 215, 128, 0.650)"}} disabled>CONTINUE</button> : <button>CONTINUE</button> }
+        {!usernames || !color ? (
+          <button
+            onClick={handleSubmit}
+            style={{ background: "rgba(99, 215, 128, 0.650)" }}
+            disabled
+          >
+            CONTINUE
+          </button>
+        ) : (
+          <button>CONTINUE</button>
+        )}
       </form>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route} from "react-router-dom";
 import Feed from "../Feed";
 import Profile from "../Profile/index";
 import homeStyles from "../Home/home.module.css"

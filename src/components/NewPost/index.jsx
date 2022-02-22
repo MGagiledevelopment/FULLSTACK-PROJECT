@@ -6,10 +6,8 @@ import { firestore } from "../../services/firebase";
 import { collection, addDoc } from "@firebase/firestore";
 
 export default function NewPost() {
-  const { text, setText, widthCounter, setWidthCounter, user, customizer } = useContext(AppContext);
-
- console.log(customizer)
-
+  const { text, setText, widthCounter, setWidthCounter, user} = useContext(AppContext);
+  
   // handle para enviar el tweet //
   const handleSubmit = (e) => {
     const tweetsCollection = collection(firestore, "social-network");
@@ -69,7 +67,7 @@ export default function NewPost() {
         <div className={feedStyles.button}>
           {" "}
           <button>
-            <img src={post} />
+            <img src={post} alt="button"/>
           </button>
         </div>
       </form>

@@ -6,14 +6,9 @@ import titleIcon1 from "../../images/title-icon1.svg";
 import titleIcon2 from "../../images/title-icon2.svg";
 export default function Header() {
   const { user } = useContext(AppContext);
-  console.log(user);
   return (
     <div className={headerStyles.container}>
-
-
-
       <div className={headerStyles.container2}>
-
         <Link to="/profile">
           {" "}
           <img
@@ -25,16 +20,11 @@ export default function Header() {
             alt="profile"
           />
         </Link>
-
-
         <div>
-          <img src={titleIcon1} /> <img src={titleIcon2} />{" "}
+          <img src={titleIcon1} alt="title" />{" "}
+          <img src={titleIcon2} alt="title" />{" "}
         </div>
-
-        
       </div>
-
-
     </div>
   );
 }
