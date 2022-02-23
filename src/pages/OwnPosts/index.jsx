@@ -6,6 +6,7 @@ import useFetchData from "../../hooks/useFetchData";
 import feedStyles from "../Feed/feed.module.css";
 import Likesbtn from "../../components/Likes/Likesbtn";
 import { timeStamp } from "../../utils";
+import Swal from "sweetalert2";
 
 export default function OwnPosts() {
   const { user } = useContext(AppContext);
@@ -16,7 +17,20 @@ export default function OwnPosts() {
   });
 
   const handleDelete = (tweet) => {
-    deleteDoc(doc(firestore, "social-network", tweet.id));
+    Swal.fire({
+      title: "Are you sure to delete this tweet?",
+      text: "will no longer be available!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#308500",
+      cancelButtonColor: "#E53100",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteDoc(doc(firestore, "social-network", tweet.id));
+        Swal.fire("has been deleted!");
+      }
+    });
   };
 
   return (

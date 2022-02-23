@@ -5,13 +5,30 @@ import { timeStamp } from "../../utils/index";
 import { AppContext } from "../../context/AppContext";
 import { firestore } from "../../services/firebase";
 import { deleteDoc, doc } from "@firebase/firestore";
+import Swal from "sweetalert2";
 
 export default function Post() {
   const { user, tweets } = useContext(AppContext);
+  // const handleDelete = (tweet) => {
+  //   deleteDoc(doc(firestore, "social-network", tweet.id));
+  // };
   const handleDelete = (tweet) => {
-    deleteDoc(doc(firestore, "social-network", tweet.id));
+    Swal.fire({
+      title: "Are you sure to delete this tweet?",
+      text: "will no longer be available!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#308500",
+      cancelButtonColor: "#E53100",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteDoc(doc(firestore, "social-network", tweet.id));
+        Swal.fire("has been deleted!");
+      }
+    });
   };
- 
+
   return (
     <div className={feedStyles.containerTweets}>
       {tweets.map((tweet) => {
@@ -40,7 +57,8 @@ export default function Post() {
                 </div>{" "}
                 {/* renderizado condicional del boton delete */}
                 {user.uid === tweet.uid ? (
-                  <button className={feedStyles.buttonDelete}
+                  <button
+                    className={feedStyles.buttonDelete}
                     onClick={() => {
                       handleDelete(tweet);
                     }}
