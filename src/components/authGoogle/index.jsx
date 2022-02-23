@@ -12,7 +12,7 @@ import {
   setPersistence,
   browserSessionPersistence,
 } from "@firebase/auth";
-import { addDoc, collection} from "@firebase/firestore";
+import { addDoc, collection } from "@firebase/firestore";
 import { firestore } from "../../services/firebase";
 
 export default function AuthGoogle() {
@@ -70,20 +70,33 @@ export default function AuthGoogle() {
         <ClipLoader />
       ) : (
         <div className={authGoogleStyles.container}>
-          <img src={logo} alt="logo" width="200px" />
-          <div className={authGoogleStyles.button}>
-            <div className={authGoogleStyles.img}>
-              {" "}
-              <img src={image} alt="logo" />{" "}
+
+
+          <section className={authGoogleStyles.section1}>
+            <img src={logo} alt="logo" width="200px" />
+            
+          </section>
+
+
+          <section className={authGoogleStyles.section2}>
+          <h1>WELCOME!</h1>
+            <h6>Sign in and be part of this great social network!</h6>
+            <div className={authGoogleStyles.button}>
+              <div className={authGoogleStyles.img}>
+                {" "}
+                <img src={image} alt="logo" />{" "}
+              </div>
+              <button
+                onClick={() => {
+                  logIn();
+                }}
+              >
+                Sign in with Google
+              </button>{" "}
             </div>
-            <button
-              onClick={() => {
-                logIn();
-              }}
-            >
-              Sign in with Google
-            </button>{" "}
-          </div>
+          </section>
+
+
         </div>
       )}
     </>

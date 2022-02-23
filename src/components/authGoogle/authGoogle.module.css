@@ -1,35 +1,70 @@
-.container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100vh;
-    background-color: rgb(43,20,43);
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  background-color: rgb(43, 20, 43);
+}
+
+.section1 {
+    padding:1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 700px) {
+    .section1 img {
+      height: 20rem;
+      width: 26rem;
+    }
+  }
+
+.section2 {
+    padding:1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  font-family: "Press Start 2P", cursive;
+}
+.section2 h1{
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+    margin-bottom: 2rem;
+}
+.section2 h6{
+    font-size: 1rem;
+    line-height: 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: 0.1rem;
+}
+.button {
+  display: flex;
+  align-items: center;
+}
+.img {
+  padding: 1.4rem;
+  background-color: white;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
-.button{
-    display:flex;
-    align-items: center;
+.button img {
+  width: 2.5rem;
+  height: 2.5rem;
 }
-.img{
-    padding: 1.4rem;
-    background-color: white;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.button img{
-    width:2.5rem;
-    height:2.5rem ;
-    
-}
-.button :nth-child(2){
-    width:20rem;
-    height: 5rem;
-    border-style: none;
-    background-color: rgb(83,131,237);
-    color:white;
-    
+.button :nth-child(2) {
+  width: 20rem;
+  height: 5rem;
+  border-style: none;
+  background-color: rgb(83, 131, 237);
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
 }
