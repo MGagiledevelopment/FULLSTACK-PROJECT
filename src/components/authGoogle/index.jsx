@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { css } from "@emotion/react";
 import authGoogleStyles from "../authGoogle/authGoogle.module.css";
 import image from "../../images/google.png";
 import logo from "../../images/logo-big.svg";
