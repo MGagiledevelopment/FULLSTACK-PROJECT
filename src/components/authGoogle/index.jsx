@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { css } from "@emotion/react";
 import authGoogleStyles from "../authGoogle/authGoogle.module.css";
 import image from "../../images/google.png";
 import logo from "../../images/logo-big.svg";
@@ -19,6 +20,7 @@ export default function AuthGoogle() {
   const { data, setData, setUser, loading, setLoading } =
     useContext(AppContext);
   const auth = getAuth();
+  let [color] = useState("#ffffff");
 
   const handlePersist = async () => {
     setLoading(true);
@@ -67,19 +69,17 @@ export default function AuthGoogle() {
   return (
     <>
       {loading ? (
-        <ClipLoader />
+        <div className={authGoogleStyles.loader}>
+          <ClipLoader color={color} />
+        </div>
       ) : (
         <div className={authGoogleStyles.container}>
-
-
           <section className={authGoogleStyles.section1}>
             <img src={logo} alt="logo" width="200px" />
-            
           </section>
 
-
           <section className={authGoogleStyles.section2}>
-          <h1>WELCOME!</h1>
+            <h1>WELCOME!</h1>
             <h6>Sign in and be part of this great social network!</h6>
             <div className={authGoogleStyles.button}>
               <div className={authGoogleStyles.img}>
@@ -95,8 +95,6 @@ export default function AuthGoogle() {
               </button>{" "}
             </div>
           </section>
-
-
         </div>
       )}
     </>
