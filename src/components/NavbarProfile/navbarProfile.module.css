@@ -26,6 +26,7 @@
   width: 11rem;
   letter-spacing: 0.3rem;
   border-style: none;
+  text-decoration: none;
 }
 
 .buttonOut:hover {
